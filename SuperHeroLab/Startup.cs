@@ -29,6 +29,7 @@ namespace SuperHeroLab
             services.AddControllers();
 
             services.AddTransient<ISearch, SearchRepository>();
+            services.AddTransient<IHeroSearch, HeroSearchRepository>();
 
             services.AddRazorPages();
         }
