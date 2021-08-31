@@ -17,6 +17,11 @@ namespace SuperHeroLab.Controllers
         public IActionResult Search(int id)
         {
             HeroResponse heroResponse = _search.GetHero(id);
+            if (heroResponse.Response.Equals("error"))
+            {
+                ViewBag.Message = "Invalid hero or villian";
+                return View("_NotFound");
+            }
             return View(heroResponse);
         }
     }

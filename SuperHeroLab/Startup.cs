@@ -46,6 +46,16 @@ namespace SuperHeroLab
                 app.UseExceptionHandler("/Error");
             }
 
+            app.Use(async (context, next) =>
+            {
+                await next();
+                if (context.Response.StatusCode == 404)
+                {
+                    context.Request.Path = "/Error";
+                    await next();
+                }
+            });
+
             app.UseStaticFiles();
 
             app.UseRouting();
