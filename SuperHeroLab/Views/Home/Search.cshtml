@@ -22,18 +22,19 @@
 <br />
 
 <div class="row">
-
     @if (Model.Response.Equals("success"))
     {
         @foreach (var Hero in Model.Results)
         {
             <div class="col-md-3" style="margin: 10px">
                 <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" width="100" height="250" src="@Hero.Image.Url" alt="Superhero">
+                    <img class="card-img-top" src="@Hero.Image.Url" alt="Superhero">
                     <div class="card-body">
                         <h5 class="card-title">@Hero.Name</h5>
-                        <p class="card-text">Gender: @Hero.Appearance.Gender</p>
-                        <a asp-controller="Hero" asp-route-id="@Hero.Id" asp-action="Search" class="btn btn-primary">More Details</a>
+                        <p class="card-text">Gender: @Hero.Appearance.Gender</p>                        
+                    </div>
+                    <div class="card-footer text-center">
+                        <a asp-controller="Hero" asp-route-id="@Hero.Id" asp-action="Search" class="btn btn-success">Details</a>
                     </div>
                 </div>
             </div>
