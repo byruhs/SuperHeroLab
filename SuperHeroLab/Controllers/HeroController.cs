@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using SuperHeroLab.Data.Interface;
 using SuperHeroLab.Data.Model;
 
@@ -16,6 +17,8 @@ namespace SuperHeroLab.Controllers
         [HttpGet("character/{id}")]
         public IActionResult Search(int id)
         {
+            ViewData["value"] = HttpContext.Session.GetString("value");
+
             HeroResponse heroResponse = _search.GetHero(id);
             if (heroResponse.Response.Equals("error"))
             {
